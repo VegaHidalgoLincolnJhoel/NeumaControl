@@ -30,12 +30,12 @@ Permite llevar un control eficiente y detallado de productos como llantas, parch
 ## 📂 Estructura del proyecto
 
 NeumaControl/
-├── src/
+├---src/
 │ ├── modelo/ # Clases del modelo (POJOs)
 │ ├── dao/ # Acceso a datos (JDBC)
 │ ├── vista/ # Interfaces gráficas (Swing)
 │ └── controlador/ # Lógica de control del sistema
-├── recursos/
+├--- recursos/
 │ └── logo.png # Logotipo del sistema
 ├── database/
 │ └── script.sql # Script de creación de base de datos
