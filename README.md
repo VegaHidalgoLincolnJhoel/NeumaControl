@@ -28,7 +28,7 @@ Permite llevar un control eficiente y detallado de productos como llantas, parch
 ---
 
 ## 📂 Estructura del proyecto
----
+
 NeumaControl/
 ├──src/
 │ ├── modelo/ # Clases del modelo (POJOs)
@@ -40,11 +40,15 @@ NeumaControl/
 ├── database/
 │ └── script.sql # Script de creación de base de datos
 └── README.md
+
 ---
-🤝 Autor
+
+## 🤝 Autor
 👨‍💻 Lincoln
 Estudiante de Ingeniería de Sistemas – UTP
 Apasionado por la tecnología, los videojuegos, y el desarrollo de software útil para la vida diaria.
 
-📃 Licencia
+---
+
+## 📃 Licencia
 Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más información.
