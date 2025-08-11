@@ -8,14 +8,14 @@ package com.Interfaz;
  *
  * @author linco
  */
-public class vistaVentas extends javax.swing.JPanel {
+public class vistaReporte extends javax.swing.JPanel {
 
     private java.util.List<Producto> productos;
     private int productosPorPagina = 10; // 5 columnas x 2 filas
     private int paginaActual = 1;
     private int totalPaginas = 1;
             
-    public vistaVentas() {
+    public vistaReporte() {
         initComponents();
         
          java.util.List<Producto> mock = new java.util.ArrayList<>();

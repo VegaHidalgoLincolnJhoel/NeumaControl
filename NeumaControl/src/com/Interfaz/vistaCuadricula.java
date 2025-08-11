@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package com.Interfaz;
-
+import com.modelo.btnBuscar;
 /**
  *
  * @author linco
@@ -14,6 +14,8 @@ public class vistaCuadricula extends javax.swing.JPanel {
     private int productosPorPagina = 10; // 5 columnas x 2 filas
     private int paginaActual = 1;
     private int totalPaginas = 1;
+    
+    btnBuscar btnB = new btnBuscar();
 
     /**
      * Creates new form vistaCuadricula
@@ -41,30 +43,37 @@ public class vistaCuadricula extends javax.swing.JPanel {
     private void initComponents() {
 
         vistaLista = new javax.swing.JPanel();
-        txtLista = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         ScrollCuadricula = new javax.swing.JScrollPane();
         contenedorCuadricula = new javax.swing.JPanel();
         panelPaginacion = new javax.swing.JPanel();
         btnAnterior = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         txtPaginaActual = new javax.swing.JLabel();
+        ContenedorBotones = new javax.swing.JPanel();
+        btnAñadirProducto = new javax.swing.JButton();
+        btnEliminarProducto = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnVerAñadidos = new javax.swing.JButton();
+        ContenedorBusqueda = new javax.swing.JPanel();
+        txtBusqueda = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jComboBoxCategoria = new javax.swing.JComboBox<>();
 
         vistaLista.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         vistaLista.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txtLista.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
-        txtLista.setIcon(new javax.swing.ImageIcon("C:\\Users\\linco\\OneDrive\\Documentos\\NeumaControl\\NeumaControl\\NeumaControl\\Imagenes\\Iconos\\cuadricula.png")); // NOI18N
-        txtLista.setText("Lista");
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\linco\\OneDrive\\Documentos\\NeumaControl\\NeumaControl\\NeumaControl\\Imagenes\\Iconos\\NeumaControl logo.jpg")); // NOI18N
 
         javax.swing.GroupLayout vistaListaLayout = new javax.swing.GroupLayout(vistaLista);
         vistaLista.setLayout(vistaListaLayout);
         vistaListaLayout.setHorizontalGroup(
             vistaListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLista, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+            .addComponent(jLabel1)
         );
         vistaListaLayout.setVerticalGroup(
             vistaListaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtLista, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLabel1)
         );
 
         contenedorCuadricula.setLayout(new java.awt.GridLayout(0, 5, 10, 10));
@@ -92,20 +101,115 @@ public class vistaCuadricula extends javax.swing.JPanel {
         panelPaginacionLayout.setHorizontalGroup(
             panelPaginacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPaginacionLayout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addContainerGap()
                 .addComponent(btnAnterior)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPaginaActual, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSiguiente)
-                .addContainerGap(274, Short.MAX_VALUE))
+                .addContainerGap())
         );
         panelPaginacionLayout.setVerticalGroup(
             panelPaginacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPaginacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtPaginaActual))
             .addGroup(panelPaginacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(btnAnterior)
-                .addComponent(btnSiguiente)
-                .addComponent(txtPaginaActual))
+                .addComponent(btnSiguiente))
+        );
+
+        btnAñadirProducto.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnAñadirProducto.setText("<html><center>Añadir<br>producto</center></html> "); // NOI18N
+        btnAñadirProducto.setToolTipText(""); // NOI18N
+        btnAñadirProducto.setActionCommand("Añadir al carrito");
+        btnAñadirProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAñadirProducto.setHideActionText(true);
+        btnAñadirProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnAñadirProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirProductoActionPerformed(evt);
+            }
+        });
+
+        btnEliminarProducto.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnEliminarProducto.setText("<html><center>Eliminar<br>producto</center></html>");
+        btnEliminarProducto.setActionCommand("");
+
+        btnModificar.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnModificar.setText("<html><center>Modificar<br>producto</center></html>");
+
+        btnVerAñadidos.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        btnVerAñadidos.setText("<html><center>Ver<br>añadidos</center></html>");
+
+        javax.swing.GroupLayout ContenedorBotonesLayout = new javax.swing.GroupLayout(ContenedorBotones);
+        ContenedorBotones.setLayout(ContenedorBotonesLayout);
+        ContenedorBotonesLayout.setHorizontalGroup(
+            ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContenedorBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnModificar)
+                    .addComponent(btnAñadirProducto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerAñadidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        ContenedorBotonesLayout.setVerticalGroup(
+            ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContenedorBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAñadirProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ContenedorBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVerAñadidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        txtBusqueda.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBusquedaActionPerformed(evt);
+            }
+        });
+
+        btnBuscar.setFont(new java.awt.Font("Roboto Black", 1, 14)); // NOI18N
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        jComboBoxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Seleccione una categoria--", "Llantas", "Parches", "Camaras", "Accesorios", "Selladores y Reparación" }));
+
+        javax.swing.GroupLayout ContenedorBusquedaLayout = new javax.swing.GroupLayout(ContenedorBusqueda);
+        ContenedorBusqueda.setLayout(ContenedorBusquedaLayout);
+        ContenedorBusquedaLayout.setHorizontalGroup(
+            ContenedorBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorBusquedaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(btnBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+        );
+        ContenedorBusquedaLayout.setVerticalGroup(
+            ContenedorBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContenedorBusquedaLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(ContenedorBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar)
+                    .addComponent(jComboBoxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -115,11 +219,17 @@ public class vistaCuadricula extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScrollCuadricula)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(vistaLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelPaginacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(14, 14, 14)
+                        .addComponent(vistaLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(ContenedorBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ScrollCuadricula)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(panelPaginacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -127,9 +237,16 @@ public class vistaCuadricula extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(vistaLista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
-                .addComponent(ScrollCuadricula, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(ContenedorBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ContenedorBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(vistaLista, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ScrollCuadricula, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPaginacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -150,6 +267,18 @@ public class vistaCuadricula extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void txtBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBusquedaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        btnB.BuscarProducto(txtBusqueda);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnAñadirProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirProductoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAñadirProductoActionPerformed
 
     private void cargarProductos(java.util.List<Producto> lista) {
         this.productos = lista;
@@ -190,12 +319,21 @@ public class vistaCuadricula extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel ContenedorBotones;
+    private javax.swing.JPanel ContenedorBusqueda;
     private javax.swing.JScrollPane ScrollCuadricula;
     private javax.swing.JButton btnAnterior;
+    private javax.swing.JButton btnAñadirProducto;
+    private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEliminarProducto;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSiguiente;
+    private javax.swing.JButton btnVerAñadidos;
     private javax.swing.JPanel contenedorCuadricula;
+    private javax.swing.JComboBox<String> jComboBoxCategoria;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel panelPaginacion;
-    private javax.swing.JLabel txtLista;
+    private javax.swing.JTextField txtBusqueda;
     private javax.swing.JLabel txtPaginaActual;
     private javax.swing.JPanel vistaLista;
     // End of variables declaration//GEN-END:variables

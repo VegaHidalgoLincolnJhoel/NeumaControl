@@ -4,6 +4,7 @@
  */
 package com.Interfaz;
 
+import Conexion.Conexion;
 import java.awt.CardLayout;
 
 /**
@@ -16,10 +17,16 @@ public class InterfazInventario extends javax.swing.JFrame {
      * Creates new form InterfazInventario
      */
     vistaCuadricula vc = new vistaCuadricula();
-    
+    vistaVentas vv = new vistaVentas();
+    private CardLayout vista;
+
     public InterfazInventario() {
         initComponents();
-        CardLayout vista = (CardLayout) Contenedor.getLayout();
+        vista = (CardLayout) Contenedor.getLayout();
+        Contenedor.add(vc, "Cuadricula");
+        Contenedor.add(vv, "Ventas");
+        Conexion link = new Conexion();
+        link.establecerConexion();
     }
 
     /**
@@ -46,7 +53,8 @@ public class InterfazInventario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(803, 473));
+        setPreferredSize(new java.awt.Dimension(1024, 576));
+        setSize(new java.awt.Dimension(1024, 576));
 
         Encabezado.setBackground(new java.awt.Color(51, 204, 0));
         Encabezado.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -75,6 +83,11 @@ public class InterfazInventario extends javax.swing.JFrame {
 
         Inventario.setBackground(new java.awt.Color(51, 204, 0));
         Inventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Inventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                InventarioMouseClicked(evt);
+            }
+        });
 
         txtInventario.setBackground(new java.awt.Color(51, 51, 51));
         txtInventario.setFont(new java.awt.Font("Roboto SemiBold", 1, 14)); // NOI18N
@@ -100,12 +113,22 @@ public class InterfazInventario extends javax.swing.JFrame {
 
         Ventas.setBackground(new java.awt.Color(51, 204, 0));
         Ventas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Ventas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                VentasMouseClicked(evt);
+            }
+        });
 
         txtVentas.setBackground(new java.awt.Color(51, 51, 51));
         txtVentas.setFont(new java.awt.Font("Roboto SemiBold", 1, 14)); // NOI18N
         txtVentas.setForeground(new java.awt.Color(51, 51, 51));
         txtVentas.setIcon(new javax.swing.ImageIcon("C:\\Users\\linco\\OneDrive\\Documentos\\NeumaControl\\NeumaControl\\NeumaControl\\Imagenes\\Iconos\\ventas.png")); // NOI18N
         txtVentas.setText("Ventas");
+        txtVentas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtVentasMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout VentasLayout = new javax.swing.GroupLayout(Ventas);
         Ventas.setLayout(VentasLayout);
@@ -185,7 +208,7 @@ public class InterfazInventario extends javax.swing.JFrame {
                 .addComponent(Ventas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Reporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(Salir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -206,18 +229,19 @@ public class InterfazInventario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Encabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Encabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSalirMouseClicked
@@ -225,8 +249,20 @@ public class InterfazInventario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSalirMouseClicked
 
     private void txtInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtInventarioMouseClicked
-        Contenedor.add(vc, "Cuadricula");
+        vista.show(Contenedor, "Cuadricula");
     }//GEN-LAST:event_txtInventarioMouseClicked
+
+    private void InventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_InventarioMouseClicked
+        //Contenedor.add(vc, "Cuadricula");
+    }//GEN-LAST:event_InventarioMouseClicked
+
+    private void VentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_VentasMouseClicked
+        //Contenedor.add(vv, "Ventas");
+    }//GEN-LAST:event_VentasMouseClicked
+
+    private void txtVentasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVentasMouseClicked
+        vista.show(Contenedor, "Ventas");
+    }//GEN-LAST:event_txtVentasMouseClicked
 
     /**
      * @param args the command line arguments
